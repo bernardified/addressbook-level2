@@ -79,14 +79,20 @@ public class Main {
     /** Reads the user command and executes it, until the user issues the exit command.  */
     private void runCommandLoopUntilExitCommand() {
         Command command;
-        do {
-            String userCommandText = ui.getUserCommand();
-            command = new Parser().parseCommand(userCommandText);
-            CommandResult result = executeCommand(command);
-            recordResult(result);
-            ui.showResultToUser(result);
-
-        } while (!ExitCommand.isExit(command));
+        try{
+        	this.storage.checkFileNotMissing();
+        	do {
+            	String userCommandText = ui.getUserCommand();
+            	command = new Parser().parseCommand(userCommandText);
+            	CommandResult result = executeCommand(command);
+            	recordResult(result);
+            	ui.showResultToUser(result);
+            
+        	} while (!ExitCommand.isExit(command));
+        } catch (FileMissingException e) {
+        	ui.showToUser(e.getMessage());
+        	exit();
+        }
     }
 
     /** Updates the {@link #lastShownList} if the result contains a list of Persons. */
