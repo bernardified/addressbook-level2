@@ -42,6 +42,15 @@ public class StorageFile {
             super(message);
         }
     }
+    
+    /**
+     * Signals that the given file path does not exists
+     */
+    public static class FileMissingException extends Exception {
+    	public FileMissingException(String message) {
+    		super(message);
+    	}
+    }
 
     private final JAXBContext jaxbContext;
 
@@ -139,6 +148,13 @@ public class StorageFile {
         } catch (IllegalValueException ive) {
             throw new StorageOperationException("File contains illegal data values; data type constraints not met");
         }
+    }
+    
+    public void checkFileNotMissing() throws FileMissingException {
+    	File file = new File(this.getPath());
+    	if(!file.exists()) {
+    		throw new FileMissingException("Storage file is missing.");
+    	}
     }
 
     public String getPath() {
