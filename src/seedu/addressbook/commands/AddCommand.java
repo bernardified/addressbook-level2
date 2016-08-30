@@ -40,11 +40,13 @@ public class AddCommand extends Command {
         for (String tagName : tags) {
             tagSet.add(new Tag(tagName));
         }
+        String[] addressArray = address.split(", ");
         this.toAdd = new Person(
                 new Name(name),
                 new Phone(phone, isPhonePrivate),
                 new Email(email, isEmailPrivate),
-                new Address(address, isAddressPrivate),
+                new Address(new Block(addressArray[0]), new Street(addressArray[1]), new Unit(addressArray[2]),
+                			new PostalCode(addressArray[3]), isAddressPrivate),
                 new UniqueTagList(tagSet)
         );
     }
