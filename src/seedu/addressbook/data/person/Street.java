@@ -7,6 +7,10 @@ public class Street {
 	public Street(String value) {
 	         this.value = value;
 	}
+	
+	public String getValue(){
+		return value;
+	}
 	 
 	@Override
 	public String toString() {
