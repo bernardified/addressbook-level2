@@ -8,13 +8,20 @@ import seedu.addressbook.data.exception.IllegalValueException;
  */
 public class Address {
 
-    public static final String EXAMPLE = "123, some street";
-    public static final String MESSAGE_ADDRESS_CONSTRAINTS = "Person addresses can be in any format";
-    public static final String ADDRESS_VALIDATION_REGEX = ".+";
+    public static final String EXAMPLE = "123, some street, #12-34, 123456";
+    public static final String MESSAGE_ADDRESS_CONSTRAINTS = "Person addresses must be in BLOCK, STREET, UNIT,"
+    															+ " POSTAL_CODE";
+    
+    public static final String ADDRESS_VALIDATION_REGEX = ".+, .+, .+, .+";
 
     public final String value;
     private boolean isPrivate;
-
+    
+    private Block block;
+    private Street street;
+    private Unit unit;
+    private PostalCode postalCode;
+    
     /**
      * Validates given address.
      *
@@ -26,6 +33,15 @@ public class Address {
             throw new IllegalValueException(MESSAGE_ADDRESS_CONSTRAINTS);
         }
         this.value = address;
+    }
+    
+    public Address(Block block, Street street, Unit unit, PostalCode postalCode, boolean isPrivate) {
+        this.isPrivate = isPrivate;
+        this.value = combineAddress();
+    }
+    
+    public String combineAddress(){
+    	return block.getValue() + ", " + street.getValue() + ", " + unit.getValue() + ", " + postalCode.getValue();
     }
 
     /**
