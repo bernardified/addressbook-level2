@@ -52,7 +52,9 @@ public class Name {
     	 if (other == null) {
     		 return false;
     	 } else {
-    		 return this.toString().equalsIgnoreCase(other.toString());
+    		 String nameOne = this.toString().toLowerCase();
+    		 String nameTwo = other.toString().toLowerCase();
+    		 return nameOne.contains(nameTwo) || nameTwo.contains(nameOne);
     	 }
      }
 

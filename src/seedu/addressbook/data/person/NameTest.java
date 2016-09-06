@@ -26,6 +26,12 @@ public class NameTest {
 	}
 	
 	@Test
+	public void isSimilar_differenName_returnsFalse() throws IllegalValueException {
+		Name testDifferentName = new Name("John Doe");
+		assertFalse("different name should return false", testDifferentName.isSimilar(new Name("Mary Jane")));
+	}
+	
+	@Test
 	public void isSimilar_differentCasing_returnsTrue() throws IllegalValueException {
 		Name testDifferentCasing = new Name("John Doe");
 		assertTrue("name in a different casing should return true", testDifferentCasing.isSimilar(new Name("JOhn DOe")));
@@ -40,7 +46,7 @@ public class NameTest {
 	@Test
 	public void isSimilar_supersetName_returnsTrue() throws IllegalValueException {
 		Name testSupersetName = new Name("John Doe");
-		assertTrue("other name is a subset name should return true", testSupersetName.isSimilar(new Name("John Sam Doe")));
+		assertTrue("other name is a subset name should return true", testSupersetName.isSimilar(new Name("John Doe Smith")));
 	}
 
 }
