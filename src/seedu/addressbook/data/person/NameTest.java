@@ -18,5 +18,11 @@ public class NameTest {
 		Name testNull = new Name("John Doe");
 		assertFalse("null input should return false", testNull.isSimilar(null));
 	}
+	
+	@Test
+	public void isSimilar_sameName_returnsTrue() throws IllegalValueException {
+		Name testSameName = new Name("John Doe");
+		assertTrue("same string name should return true", testSameName.isSimilar(new Name("John Doe")));
+	}
 
 }
