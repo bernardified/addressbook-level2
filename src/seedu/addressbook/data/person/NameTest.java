@@ -31,5 +31,16 @@ public class NameTest {
 		assertTrue("name in a different casing should return true", testDifferentCasing.isSimilar(new Name("JOhn DOe")));
 	}
 	
+	@Test
+	public void isSimilar_subsetName_returnsTrue() throws IllegalValueException {
+		Name testSubsetName = new Name("John Doe");
+		assertTrue("other name is a subset name should return true", testSubsetName.isSimilar(new Name("John")));
+	}
+	
+	@Test
+	public void isSimilar_supersetName_returnsTrue() throws IllegalValueException {
+		Name testSupersetName = new Name("John Doe");
+		assertTrue("other name is a subset name should return true", testSupersetName.isSimilar(new Name("John Sam Doe")));
+	}
 
 }
