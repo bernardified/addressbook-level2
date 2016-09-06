@@ -24,5 +24,11 @@ public class NameTest {
 		Name testSameName = new Name("John Doe");
 		assertTrue("same string name should return true", testSameName.isSimilar(new Name("John Doe")));
 	}
+	
+	@Test
+	public void isSimilar_differentCasing_returnsTrue() throws IllegalValueException {
+		Name testDifferentCasing = new Name("John Doe");
+		assertTrue("name in a different casing should return true", testDifferentCasing.isSimilar(new Name("JOhn DOe")));
+	}
 
 }
