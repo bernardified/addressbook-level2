@@ -52,7 +52,7 @@ public class Name {
     	 if (other == null) {
     		 return false;
     	 } else {
-    		 return this.toString().equals(other.toString());
+    		 return this.toString().equalsIgnoreCase(other.toString());
     	 }
      }
 

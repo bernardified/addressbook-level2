@@ -30,5 +30,6 @@ public class NameTest {
 		Name testDifferentCasing = new Name("John Doe");
 		assertTrue("name in a different casing should return true", testDifferentCasing.isSimilar(new Name("JOhn DOe")));
 	}
+	
 
 }
