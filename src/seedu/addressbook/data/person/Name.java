@@ -51,8 +51,9 @@ public class Name {
      public boolean isSimilar(Name other) { 
     	 if (other == null) {
     		 return false;
-    	 } 
-    	 return true;
+    	 } else {
+    		 return this.toString().equals(other.toString());
+    	 }
      }
 
     @Override
